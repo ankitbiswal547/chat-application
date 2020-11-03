@@ -9,8 +9,6 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -70,7 +68,7 @@ io.on('connection', (socket) => {
     })
 })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 server.listen(port, () => {
     console.log(`server started at port ${port}`);
